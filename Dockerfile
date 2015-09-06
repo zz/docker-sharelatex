@@ -3,7 +3,7 @@ FROM phusion/baseimage:0.9.16
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/texlive/2015/bin/x86_64-linux/
 
 # Install all packages needed
-RUN apt-get install -y build-essential nodejs python git \
+RUN apt-get -y update && apt-get install -y build-essential nodejs python git \
 	 zlib1g-dev nginx wget \
 	 aspell aspell-en aspell-af aspell-am aspell-ar aspell-ar-large aspell-bg \
 	 aspell-bn aspell-br aspell-ca aspell-cs aspell-cy aspell-da aspell-de \
@@ -15,7 +15,7 @@ RUN apt-get install -y build-essential nodejs python git \
 	 aspell-sk aspell-sl aspell-ss aspell-st aspell-sv aspell-ta aspell-te aspell-tl aspell-tn \
 	 aspell-ts aspell-uk aspell-uz aspell-xh aspell-zu \
 	 unzip && \
-	 apt-get clean && rm -rf /var/lib/apt/lists/*
+	 apt-get -y clean && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js and Grunt
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash - && npm install -g grunt-cli; \
